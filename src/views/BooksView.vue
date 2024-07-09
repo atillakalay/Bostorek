@@ -1,20 +1,32 @@
 <template>
-  <section>
-    <div class="container">
-      <section-header
-        title="Books"
-        text="Kitaplar, bilgiye ve hayal gücüne açılan kapılardır. Farklı dünyaları keşfetmek, yeni bilgiler edinmek ve düşünce ufkunuzu genişletmek için kitaplardan daha iyi bir yol yoktur. Bu bölümde, edebiyatın klasikleri, modern başyapıtlar, kişisel gelişim kitapları ve daha fazlasını bulacaksınız. Her yaştan okura hitap eden geniş yelpazemizle, sizin için en uygun kitabı bulacağınıza eminiz. Okuma keyfinizi artıracak ve sizlere ilham verecek kitaplarımızla tanışın!"
-      />
-    </div>
-  </section>
-</template>
-
-<script>
-import SectionHeader from "@/components/SectionHeader.vue";
-export default {
-  components: { SectionHeader },
-  name: "BooksView",
-};
-</script>
-
-<style lang="scss" scoped></style>
+    <section>
+      <div class="container">
+        <SectionHeader title="Books" text="We declare long prop names using camelCase because this avoids" />
+        <BookList :books="books" />
+      </div>
+    </section>
+  </template>
+  
+  <script>
+  import SectionHeader from '@/components/SectionHeader.vue';
+  import BookList from '@/components/BookList.vue';
+  import books from "@/db.js";
+  export default {
+    name: "BooksView",
+    components: {
+      SectionHeader,
+      BookList
+    },
+    data() {
+      return {
+        books: books
+      }
+    }
+  }
+  </script>
+  
+  <style scoped>
+  .auth-box {
+    margin-top: -30px;
+  }
+  </style>
