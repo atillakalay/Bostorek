@@ -1,15 +1,17 @@
 <template>
-    <div>
-
+  <section>
+    <div class="container">
+      <section-header title="Contact" text="Contact text" />
     </div>
+  </section>
 </template>
 
 <script>
-    export default {
-        name: "ContactView",
-    }
+import SectionHeader from "@/components/SectionHeader.vue";
+export default {
+  name: "ContactView",
+  components:{SectionHeader}
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
