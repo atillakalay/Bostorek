@@ -6,7 +6,11 @@
         text="We declare long prop names using camelCase because this avoids"
       />
       <BookList :books="paginatedBooks" />
-      <pagination :currentPage="currentPage" :totalPages="totalPages" />
+      <Pagination
+        :currentPage="currentPage"
+        :totalPages="totalPages"
+        @page-changed="updatePage"
+      />
     </div>
   </section>
 </template>
@@ -27,17 +31,22 @@ export default {
     return {
       books: books,
       currentPage: 1,
-      itemsPerPage: 4,
+      itemsPerPage: 8,
     };
   },
   computed: {
-    totalPage() {
+    totalPages() {
       return Math.ceil(this.books.length / this.itemsPerPage);
     },
     paginatedBooks() {
       const startIndex = (this.currentPage - 1) * this.itemsPerPage;
       const endIndex = startIndex + this.itemsPerPage;
       return this.books.slice(startIndex, endIndex);
+    },
+  },
+  methods: {
+    updatePage(page) {
+      this.currentPage = page;
     },
   },
 };
